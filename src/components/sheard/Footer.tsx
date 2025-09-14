@@ -7,16 +7,23 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import logo from "@/assets/percel-logo.png";
 
 export default function Footer() {
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Parcels", path: "/parcels" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Contact", path: "/contact" },
+  ];
   return (
     <footer className="bg-gray-900 text-gray-300 py-10 mt-10">
       <div className="max-w-7xl w-full mx-auto">
         <div className="container flex flex-col md:flex-row justify-between gap-8">
           {/* Brand Info */}
           <div className="flex-1">
-            <h2 className="text-2xl font-bold text-white">📦 ParcelDelivery</h2>
-            <p className="mt-3 text-sm">
+            <img className="w-[80px] h-[75px]" src={logo} alt="" />
+            <p className="mt-2 text-sm">
               দ্রুত, নির্ভরযোগ্য এবং নিরাপদ পার্সেল ডেলিভারি সেবা। শহর থেকে
               গ্রাম – আমরা আপনার পাশে।
             </p>
@@ -28,26 +35,13 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-white">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="hover:text-white">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white">
-                  Contact
-                </Link>
-              </li>
+              {links.map((item) => (
+                <li>
+                  <Link to={item.path} className="hover:text-white">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}{" "}
             </ul>
           </div>
 

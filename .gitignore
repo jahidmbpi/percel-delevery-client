@@ -1,3 +1,5 @@
+# env veriable
+.env
 # Logs
 logs
 *.log
