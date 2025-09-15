@@ -6,7 +6,7 @@ export default function PublicLayOut() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="grow-1 mx-auto max-w-7xl w-full">
+      <div className="grow-1">
         <Outlet></Outlet>
       </div>
       <Footer />

@@ -17,11 +17,11 @@ export default function Footer() {
     { name: "Contact", path: "/contact" },
   ];
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 mt-10">
+    <footer className="bg-gray-900 text-gray-300 py-10 ">
       <div className="max-w-7xl w-full mx-auto">
-        <div className="container flex flex-col md:flex-row justify-between gap-8">
+        <div className="container flex flex-col  p-4 md:flex-row justify-between gap-8 md:p-8 lg:p-0">
           {/* Brand Info */}
-          <div className="flex-1">
+          <div className="flex-1 ">
             <img className="w-[80px] h-[75px]" src={logo} alt="" />
             <p className="mt-2 text-sm">
               দ্রুত, নির্ভরযোগ্য এবং নিরাপদ পার্সেল ডেলিভারি সেবা। শহর থেকে
@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="flex-1 ">
+          <div className="flex-1  ">
             <h3 className="text-lg font-semibold text-white mb-3">
               Quick Links
             </h3>
