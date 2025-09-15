@@ -13,6 +13,10 @@ export default function Navbar() {
     { name: "Parcels", path: "/parcels" },
     { name: "Dashboard", path: "/dashboard" },
     { name: "Contact", path: "/contact" },
+    {
+      name: "log in",
+      path: "/login",
+    },
   ];
 
   return (

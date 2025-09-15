@@ -59,44 +59,53 @@ export default function CoustomerReview() {
           Customer Reviews
         </h3>
       </div>
-      <Marquee pauseOnHover repeat={2}>
-        {reviews.map((item) => (
-          <div
-            key={item.id}
-            className="border border-foreground shadow-2xl rounded-lg w-72 p-4 mx-2"
-          >
-            <div className="flex gap-4 items-center mb-2">
-              <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                <span>Img</span>
+      <div className="space-y-4">
+        <div>
+          <Marquee pauseOnHover repeat={2}>
+            {reviews.map((item) => (
+              <div
+                key={item.id}
+                className="border border-foreground shadow-2xl rounded-lg w-72 p-4 mx-2"
+              >
+                <div className="flex gap-4 items-center mb-2">
+                  <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                    <span>Img</span>
+                  </div>
+                  <div>
+                    <h2 className="font-semibold">{item.name}</h2>
+                    <p className="text-sm text-gray-500">{item.location}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700">{item.review}</p>
               </div>
-              <div>
-                <h2 className="font-semibold">{item.name}</h2>
-                <p className="text-sm text-gray-500">{item.location}</p>
+            ))}
+          </Marquee>
+        </div>
+        <div>
+          <Marquee pauseOnHover reverse>
+            {reviews.map((item) => (
+              <div
+                key={item.id}
+                className="border border-foreground shadow-2xl rounded-lg w-72 p-4 mx-2"
+              >
+                <div className="flex  items-center mb-2 justify-between">
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                      <span>Img</span>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold">{item.name}</h2>
+                      <p className="text-sm text-gray-500">{item.location}</p>
+                    </div>
+                  </div>
+                  <p>{item.rating}</p>
+                </div>
+                <p className="text-gray-700">{item.review}</p>
               </div>
-            </div>
-            <p className="text-gray-700">{item.review}</p>
-          </div>
-        ))}
-      </Marquee>
-      <Marquee pauseOnHover reverse>
-        {reviews.map((item) => (
-          <div
-            key={item.id}
-            className="border border-foreground shadow-2xl rounded-lg w-72 p-4 mx-2"
-          >
-            <div className="flex gap-4 items-center mb-2">
-              <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                <span>Img</span>
-              </div>
-              <div>
-                <h2 className="font-semibold">{item.name}</h2>
-                <p className="text-sm text-gray-500">{item.location}</p>
-              </div>
-            </div>
-            <p className="text-gray-700">{item.review}</p>
-          </div>
-        ))}
-      </Marquee>
+            ))}
+          </Marquee>
+        </div>
+      </div>
     </div>
   );
 }
