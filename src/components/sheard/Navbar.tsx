@@ -4,9 +4,12 @@ import { Menu, X } from "lucide-react"; // icon
 
 import logo from "@/assets/percel-logo.png";
 import { Button } from "../ui/button";
+import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { data } = useGetMeQuery(undefined);
+  console.log(data);
 
   const links = [
     { name: "Home", path: "/" },

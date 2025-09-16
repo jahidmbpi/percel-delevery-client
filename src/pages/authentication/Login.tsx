@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -13,12 +12,34 @@ import { Link } from "react-router";
 import Password from "./Password";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-
+import { useLogInMutation } from "@/redux/feature/auth/auth.api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import z from "zod";
 export default function Login() {
-  const form = useForm();
+  const [logIn] = useLogInMutation();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const logInSchema = z.object({
+    email: z.string().email({ message: "please provide a valid email" }),
+    password: z
+      .string()
+      .min(10, {
+        message:
+          "password must be at least 10 characters or special charecter.",
+      })
+      .max(20, {
+        message: "password exceed 20 charecter long",
+      }),
+  });
+  const form = useForm<z.infer<typeof logInSchema>>({
+    resolver: zodResolver(logInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const onSubmit = async (data: z.infer<typeof logInSchema>) => {
+    const result = await logIn(data).unwrap();
+    console.log(result);
   };
 
   return (
