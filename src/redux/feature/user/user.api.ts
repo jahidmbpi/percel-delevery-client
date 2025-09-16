@@ -9,19 +9,21 @@ export interface IResponse<T> {
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // createTour: builder.mutation({
-    //   query: (tourInfo) => ({
-    //     url: "/tour/create-tour",
-    //     method: "POST",
-    //     data: tourInfo,
-    //   }),
-    // }),
+    createUser: builder.mutation({
+      query: (tourInfo) => ({
+        url: "/tour/create-tour",
+        method: "POST",
+        data: tourInfo,
+      }),
+      // invalidatesTags: ["USER"],
+    }),
 
     getMe: builder.query({
       query: () => ({
         url: "/user/me",
         method: "GET",
       }),
+      // providesTags: ["USER"],
     }),
   }),
 });

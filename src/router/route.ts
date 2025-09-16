@@ -1,10 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import PublicLayOut from "../layout/PublicLayOut";
 import Home from "../pages/home/Home";
-import Login from "@/pages/authentication/Login";
+
 import Deshbord from "@/layout/Deshbord";
 import { adminSidebar } from "./adminSidebar";
 import { genareteRoute } from "@/utils/genareteRoutes";
+import { reciverSidebar } from "./reciverSidbar";
+import { senderSidebar } from "./senderSidebar";
+import Register from "@/pages/authentication/register/Register";
+import Login from "@/pages/authentication/login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -15,15 +19,29 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      {
-        path: "/login",
-        Component: Login,
-      },
     ],
   },
   {
-    path: "/deshbord",
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
+  },
+  {
+    path: "/admin",
     Component: Deshbord,
     children: [...genareteRoute(adminSidebar)],
+  },
+  {
+    Component: Deshbord,
+    path: "/admin",
+    children: [...genareteRoute(reciverSidebar)],
+  },
+  {
+    Component: Deshbord,
+    path: "/sender",
+    children: [...genareteRoute(senderSidebar)],
   },
 ]);

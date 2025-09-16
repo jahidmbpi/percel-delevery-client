@@ -14,18 +14,20 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { senderSidebar } from "@/router/senderSidebar";
+
+import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
+import { getSidbarItem } from "@/utils/getsidbarItem";
+import { NavLink } from "react-router";
 
 // This is sample data.
-const data = {
-  navMain: senderSidebar,
-};
-
-// const saidbardata={
-
-// }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: userRole } = useGetMeQuery(undefined);
+  console.log(userRole);
+  const dataB = {
+    navMain: userRole ? getSidbarItem("ADMIN") : [],
+  };
+  console.log(dataB);
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -33,15 +35,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
+        {(dataB.navMain ?? []).map((item, index) => (
+          <SidebarGroup key={item.title + "-" + index}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.title + "-" + index}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url}>{item.title}</a>
+                      <NavLink
+                        to={item.url}
+                        className="flex items-center gap-2"
+                      >
+                        {item.title}
+                      </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}

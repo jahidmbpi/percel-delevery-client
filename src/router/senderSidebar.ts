@@ -7,7 +7,7 @@ export const senderSidebar = [
     items: [
       {
         title: "Project Structure",
-        url: "#",
+        url: "/sender/percel",
         Component: Createpercel,
       },
       {

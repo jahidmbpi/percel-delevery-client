@@ -1,18 +1,18 @@
 import Createpercel from "@/pages/sender/Createpercel";
 
-export const adminSidebar = [
+export const reciverSidebar = [
   {
-    title: "admin",
+    title: "reciver",
     url: "#",
     items: [
       {
         title: "Project Structure",
-        url: "/admin/percel",
+        url: "/admin/cparcel",
         Component: Createpercel,
       },
       {
         title: "Project Structure",
-        url: "/admin/percel",
+        url: "/admin/cparcel",
         Component: Createpercel,
       },
     ],

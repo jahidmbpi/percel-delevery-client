@@ -16,6 +16,13 @@ export const userApi = baseApi.injectEndpoints({
         data: tourInfo,
       }),
     }),
+    register: builder.mutation({
+      query: (tourInfo) => ({
+        url: "/auth/login",
+        method: "POST",
+        data: tourInfo,
+      }),
+    }),
 
     getMe: builder.query({
       query: () => ({
@@ -26,4 +33,4 @@ export const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useLogInMutation, useGetMeQuery } = userApi;
+export const { useLogInMutation, useRegisterMutation, useGetMeQuery } = userApi;

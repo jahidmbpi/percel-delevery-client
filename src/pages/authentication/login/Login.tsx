@@ -9,12 +9,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Link } from "react-router";
-import Password from "./Password";
+
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { useLogInMutation } from "@/redux/feature/auth/auth.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
+import Password from "./Password";
 export default function Login() {
   const [logIn] = useLogInMutation();
 
@@ -81,7 +82,7 @@ export default function Login() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel>password</FormLabel>
                       <FormControl>
                         <Password {...field} />
                       </FormControl>

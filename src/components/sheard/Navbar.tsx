@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react"; // icon
 
@@ -8,17 +8,22 @@ import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { data } = useGetMeQuery(undefined);
-  console.log(data);
+  const { data, isLoading, error } = useGetMeQuery(undefined);
+  console.log("role from api:", data);
+  console.log("error", error);
+  console.log("isloading", isLoading);
 
   const links = [
     { name: "Home", path: "/" },
     { name: "Parcels", path: "/parcels" },
-    { name: "Dashboard", path: "/deshbord" },
     { name: "Contact", path: "/contact" },
     {
       name: "log in",
       path: "/login",
+    },
+    {
+      name: "register",
+      path: "/register",
     },
   ];
 
@@ -47,6 +52,23 @@ export default function Navbar() {
                 </NavLink>
               </li>
             ))}
+            <div className="flex flex-col gap-2">
+              {data?.data?.role === "ADMIN" && (
+                <Link to="/admin" className="text-blue-500">
+                  Dashboard
+                </Link>
+              )}
+              {data?.data?.role === "SENDER" && (
+                <Link to="/sender" className="text-green-500">
+                  Dashboard
+                </Link>
+              )}
+              {data?.data?.role === "RECEIVER" && (
+                <Link to="/receiver" className="text-purple-500">
+                  Dashboard
+                </Link>
+              )}
+            </div>
           </ul>
           <Button className="hidden md:block" variant="ghost">
             log in
