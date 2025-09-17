@@ -23,9 +23,9 @@ import { NavLink } from "react-router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userRole } = useGetMeQuery(undefined);
-  console.log(userRole);
+  console.log(userRole.data.role);
   const dataB = {
-    navMain: userRole ? getSidbarItem("ADMIN") : [],
+    navMain: userRole ? getSidbarItem(userRole?.data?.role) : [],
   };
   console.log(dataB);
   return (

@@ -11,11 +11,18 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createUser: builder.mutation({
       query: (tourInfo) => ({
-        url: "/tour/create-tour",
+        url: "/user/register",
         method: "POST",
         data: tourInfo,
       }),
-      // invalidatesTags: ["USER"],
+      invalidatesTags: ["USER"],
+    }),
+    logOut: builder.mutation<void, void>({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST",
+      }),
+      invalidatesTags: ["USER"],
     }),
 
     getMe: builder.query({
@@ -23,9 +30,10 @@ export const userApi = baseApi.injectEndpoints({
         url: "/user/me",
         method: "GET",
       }),
-      // providesTags: ["USER"],
+      providesTags: ["USER"],
     }),
   }),
 });
 
-export const { useGetMeQuery } = userApi;
+export const { useCreateUserMutation, useGetMeQuery, useLogOutMutation } =
+  userApi;

@@ -10,12 +10,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import z from "zod";
 import Password from "../login/Password";
 import registerImage from "@/assets/register.png";
+import { useCreateUserMutation } from "@/redux/feature/user/user.api";
+import { toast } from "sonner";
 
 export default function Register() {
+  const [createUser] = useCreateUserMutation();
+
+  const navigate = useNavigate();
   const registerSchema = z.object({
     name: z.string(),
     email: z.string().email({ message: "please provide a valid email" }),
@@ -28,6 +33,10 @@ export default function Register() {
       .max(20, {
         message: "password exceed 20 character long",
       }),
+    phone: z.string().regex(/^01[3-9]\d{8}$/, {
+      message: "সঠিক বাংলাদেশি মোবাইল নাম্বার দিন (01XXXXXXXXX)",
+    }),
+    address: z.string().min(8).max(50),
   });
 
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -36,11 +45,20 @@ export default function Register() {
       name: "",
       email: "",
       password: "",
+      phone: "",
     },
   });
 
-  const handelRegister = (data: z.infer<typeof registerSchema>) => {
-    console.log(data);
+  const handelRegister = async (data: z.infer<typeof registerSchema>) => {
+    const result = await createUser(data).unwrap();
+    console.log(result);
+
+    if (result.success && result.message === "User created successfully") {
+      toast.success("user created successfully");
+    }
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500);
   };
 
   return (
@@ -114,6 +132,40 @@ export default function Register() {
                           <FormLabel>password</FormLabel>
                           <FormControl>
                             <Password {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>phone</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your email"
+                              type="number"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>address</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your email"
+                              type="text"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

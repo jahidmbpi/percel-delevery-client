@@ -4,27 +4,31 @@ import { Menu, X } from "lucide-react"; // icon
 
 import logo from "@/assets/percel-logo.png";
 import { Button } from "../ui/button";
-import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
+import { useGetMeQuery, userApi } from "@/redux/feature/auth/auth.api";
+import { useLogOutMutation } from "@/redux/feature/user/user.api";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { data, isLoading, error } = useGetMeQuery(undefined);
-  console.log("role from api:", data);
+  const dispatch = useDispatch();
+  const { data: userData, isLoading, error } = useGetMeQuery(undefined);
+  const [logOut] = useLogOutMutation();
   console.log("error", error);
   console.log("isloading", isLoading);
+  const handelLogOut = async () => {
+    try {
+      const result = await logOut();
+      console.log(result);
+      dispatch(userApi.util.resetApiState());
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const links = [
     { name: "Home", path: "/" },
     { name: "Parcels", path: "/parcels" },
     { name: "Contact", path: "/contact" },
-    {
-      name: "log in",
-      path: "/login",
-    },
-    {
-      name: "register",
-      path: "/register",
-    },
   ];
 
   return (
@@ -53,26 +57,36 @@ export default function Navbar() {
               </li>
             ))}
             <div className="flex flex-col gap-2">
-              {data?.data?.role === "ADMIN" && (
+              {userData?.data?.role === "ADMIN" && (
                 <Link to="/admin" className="text-blue-500">
                   Dashboard
                 </Link>
               )}
-              {data?.data?.role === "SENDER" && (
+              {userData?.data?.role === "SENDER" && (
                 <Link to="/sender" className="text-green-500">
                   Dashboard
                 </Link>
               )}
-              {data?.data?.role === "RECEIVER" && (
+              {userData?.data?.role === "RECEIVER" && (
                 <Link to="/receiver" className="text-purple-500">
                   Dashboard
                 </Link>
               )}
             </div>
           </ul>
-          <Button className="hidden md:block" variant="ghost">
-            log in
-          </Button>
+          {userData?.success ? (
+            <Button
+              onClick={handelLogOut}
+              className="hidden md:block capitalize"
+              variant="ghost"
+            >
+              <Link to="/">log Out </Link>
+            </Button>
+          ) : (
+            <Button className="hidden md:block capitalize" variant="ghost">
+              <Link to="/login"> log in</Link>
+            </Button>
+          )}
         </div>
 
         <button className="md:hidden" onClick={() => setOpen(!open)}>
