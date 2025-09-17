@@ -9,6 +9,7 @@ import { reciverSidebar } from "./reciverSidbar";
 import { senderSidebar } from "./senderSidebar";
 import Register from "@/pages/authentication/register/Register";
 import Login from "@/pages/authentication/login/Login";
+import UnAuthorized from "@/components/sheard/UnAuthorized";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     Component: Register,
+  },
+  {
+    path: "/unauthorized",
+    Component: UnAuthorized,
   },
   {
     path: "/admin",
