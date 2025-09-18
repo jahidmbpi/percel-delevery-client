@@ -26,6 +26,7 @@ const axiosBaseQuery =
         headers,
         withCredentials: true,
       });
+      console.log(params);
       return { data: result.data };
     } catch (axiosError) {
       const err = axiosError as AxiosError;

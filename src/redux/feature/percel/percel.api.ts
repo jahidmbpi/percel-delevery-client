@@ -31,8 +31,19 @@ export const percelApi = baseApi.injectEndpoints({
         return response.data;
       },
     }),
+    updateParcel: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/percel/update/${id}`,
+        method: "PATCH",
+        data: { status },
+      }),
+      invalidatesTags: ["PERCEL"],
+    }),
   }),
 });
 
-export const { useCreatePercelMutation, useGetAllSenderPercelQuery } =
-  percelApi;
+export const {
+  useCreatePercelMutation,
+  useGetAllSenderPercelQuery,
+  useUpdateParcelMutation,
+} = percelApi;

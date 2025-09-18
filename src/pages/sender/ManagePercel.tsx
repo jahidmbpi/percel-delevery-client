@@ -1,9 +1,25 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useGetAllSenderPercelQuery } from "@/redux/feature/percel/percel.api";
+import {
+  useGetAllSenderPercelQuery,
+  useUpdateParcelMutation,
+} from "@/redux/feature/percel/percel.api";
+import { Trash2 } from "lucide-react";
 
 export default function ManagePercel() {
   const { data: perceldata } = useGetAllSenderPercelQuery(undefined);
+  const [updatePercel] = useUpdateParcelMutation();
   console.log(perceldata);
+
+  const handleCancelParcel = async (id: string) => {
+    try {
+      console.log(id);
+      const result = await updatePercel({ id, status: "CANCELLED" }).unwrap();
+
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="container mx-auto py-8">
       <h2 className="text-3xl font-semibold mb-6 text-center">📦 My Parcels</h2>
@@ -53,13 +69,24 @@ export default function ManagePercel() {
                 <span className="font-semibold">Delivery Date:</span>{" "}
                 {new Date(parcel.deliveriDate).toLocaleDateString()}
               </p>
-              <p className="text-gray-500 text-xs">
-                Last Update:{" "}
-                {
-                  parcel.trackingEvents[parcel.trackingEvents.length - 1]
-                    ?.createdAt
-                }
-              </p>
+              <div className="flex justify-between">
+                <p className="text-gray-500 text-xs">
+                  Last Update:{" "}
+                  {
+                    parcel.trackingEvents[parcel.trackingEvents.length - 1]
+                      ?.createdAt
+                  }
+                </p>
+                {parcel.status !== "CANCELLED" && (
+                  <button
+                    className="flex items-center gap-2 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                    onClick={() => handleCancelParcel(parcel._id)}
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Cancel
+                  </button>
+                )}
+              </div>
             </CardContent>
           </Card>
         ))}
