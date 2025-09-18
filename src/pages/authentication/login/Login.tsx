@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
@@ -18,6 +18,8 @@ import z from "zod";
 import Password from "./Password";
 export default function Login() {
   const [logIn] = useLogInMutation();
+
+  const navigate = useNavigate();
 
   const logInSchema = z.object({
     email: z.string().email({ message: "please provide a valid email" }),
@@ -41,6 +43,7 @@ export default function Login() {
   const onSubmit = async (data: z.infer<typeof logInSchema>) => {
     const result = await logIn(data).unwrap();
     console.log(result);
+    navigate("/");
   };
 
   return (

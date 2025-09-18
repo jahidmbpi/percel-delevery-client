@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
   },
   {
     Component: Deshbord,
-    path: "/admin",
+    path: "/receiver",
     children: [...genareteRoute(reciverSidebar)],
   },
   {

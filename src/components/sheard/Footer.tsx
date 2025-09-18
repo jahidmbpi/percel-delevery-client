@@ -35,8 +35,8 @@ export default function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
-              {links.map((item) => (
-                <li>
+              {links.map((item, index) => (
+                <li key={index}>
                   <Link to={item.path} className="hover:text-white">
                     {item.name}
                   </Link>

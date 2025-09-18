@@ -19,11 +19,9 @@ import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
 import { getSidbarItem } from "@/utils/getsidbarItem";
 import { NavLink } from "react-router";
 
-// This is sample data.
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userRole } = useGetMeQuery(undefined);
-  console.log(userRole.data.role);
+
   const dataB = {
     navMain: userRole ? getSidbarItem(userRole?.data?.role) : [],
   };

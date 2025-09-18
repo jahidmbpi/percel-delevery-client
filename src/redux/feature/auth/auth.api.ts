@@ -18,7 +18,7 @@ export const userApi = baseApi.injectEndpoints({
     }),
     register: builder.mutation({
       query: (tourInfo) => ({
-        url: "/auth/login",
+        url: "/user/register",
         method: "POST",
         data: tourInfo,
       }),

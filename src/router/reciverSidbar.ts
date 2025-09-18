@@ -7,12 +7,12 @@ export const reciverSidebar = [
     items: [
       {
         title: "Project Structure",
-        url: "/admin/cparcel",
+        url: "/receiver/cparcel",
         Component: Createpercel,
       },
       {
         title: "Project Structure",
-        url: "/admin/cparcel",
+        url: "/receiver/cparcel",
         Component: Createpercel,
       },
     ],

@@ -12,6 +12,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { data: userData, isLoading, error } = useGetMeQuery(undefined);
+  console.log(userData);
   const [logOut] = useLogOutMutation();
   console.log("error", error);
   console.log("isloading", isLoading);

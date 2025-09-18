@@ -12,7 +12,7 @@ export const senderSidebar = [
       },
       {
         title: "create percel",
-        url: "#",
+        url: "/sender/create",
         Component: Createpercel,
       },
     ],
