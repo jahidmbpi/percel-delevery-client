@@ -1,4 +1,5 @@
 import Createpercel from "@/pages/sender/Createpercel";
+import ManagePercel from "@/pages/sender/ManagePercel";
 
 export const senderSidebar = [
   {
@@ -6,14 +7,14 @@ export const senderSidebar = [
     url: "#",
     items: [
       {
-        title: "Project Structure",
-        url: "/sender/percel",
-        Component: Createpercel,
-      },
-      {
         title: "create percel",
         url: "/sender/create",
         Component: Createpercel,
+      },
+      {
+        title: "Manage Percel",
+        url: "/sender/Manage-Percel",
+        Component: ManagePercel,
       },
     ],
   },

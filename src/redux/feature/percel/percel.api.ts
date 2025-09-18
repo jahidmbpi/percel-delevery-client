@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
+import type { Percel } from "./type";
 
 export interface IResponse<T> {
   massage: string;
@@ -17,7 +18,21 @@ export const percelApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["PERCEL"],
     }),
+    getAllSenderPercel: builder.query<Percel[], void>({
+      query: () => ({
+        url: "/percel/sender",
+        method: "GET",
+      }),
+      transformResponse: (response: {
+        success: boolean;
+        message: string;
+        data: Percel[];
+      }) => {
+        return response.data;
+      },
+    }),
   }),
 });
 
-export const { useCreatePercelMutation } = percelApi;
+export const { useCreatePercelMutation, useGetAllSenderPercelQuery } =
+  percelApi;
