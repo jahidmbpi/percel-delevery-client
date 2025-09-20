@@ -1,3 +1,4 @@
+import Manageuser from "@/pages/admin/user/Manageuser";
 import Createpercel from "@/pages/sender/Createpercel";
 
 export const adminSidebar = [
@@ -6,9 +7,9 @@ export const adminSidebar = [
     url: "#",
     items: [
       {
-        title: "Project Structure",
-        url: "/admin/percel",
-        Component: Createpercel,
+        title: "Manage User",
+        url: "/admin/user",
+        Component: Manageuser,
       },
       {
         title: "Project Structure",

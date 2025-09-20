@@ -40,7 +40,7 @@ export default function PercelDialog({ parcel, trigger }: PercelDialogProps) {
       <DialogTrigger asChild>{trigger}</DialogTrigger>
 
       {/* Content */}
-      <DialogContent className="w-full max-w-2xl sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg">
+      <DialogContent className="w-full max-w-2xl sm:max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">
             📦 Parcel Details

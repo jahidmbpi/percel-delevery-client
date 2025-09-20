@@ -32,8 +32,29 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["USER"],
     }),
+
+    getAlluserForAdmin: builder.query({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+      }),
+    }),
+
+    updateUser: builder.mutation({
+      query: ({ userId, data }) => ({
+        url: `/user/update/${userId}`,
+        method: "PATCH",
+        data: data,
+      }),
+      invalidatesTags: ["USER"],
+    }),
   }),
 });
 
-export const { useCreateUserMutation, useGetMeQuery, useLogOutMutation } =
-  userApi;
+export const {
+  useCreateUserMutation,
+  useGetMeQuery,
+  useLogOutMutation,
+  useGetAlluserForAdminQuery,
+  useUpdateUserMutation,
+} = userApi;
