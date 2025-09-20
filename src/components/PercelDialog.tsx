@@ -11,6 +11,7 @@ type PercelDialogProps = {
   parcel: Percel;
   trigger: React.ReactNode;
 };
+
 type TrackingEvent = {
   _id: string;
   status: string;
@@ -18,6 +19,7 @@ type TrackingEvent = {
   note?: string;
   createdAt: string;
 };
+
 type Percel = {
   _id: string;
   trakinId: string;
@@ -30,6 +32,7 @@ type Percel = {
   deliveryAddress: string;
   trackingEvents?: TrackingEvent[];
 };
+
 export default function PercelDialog({ parcel, trigger }: PercelDialogProps) {
   return (
     <Dialog>
@@ -37,45 +40,49 @@ export default function PercelDialog({ parcel, trigger }: PercelDialogProps) {
       <DialogTrigger asChild>{trigger}</DialogTrigger>
 
       {/* Content */}
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="w-full max-w-2xl sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">
             📦 Parcel Details
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-sm">
             Tracking ID:{" "}
             <span className="font-semibold">{parcel.trakinId}</span>
           </DialogDescription>
         </DialogHeader>
 
         {/* Basic Info */}
-        <div className="grid grid-cols-2 gap-4 mt-4">
-          <div className="bg-gray-100 p-2 rounded">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <div className="bg-gray-100 p-3 rounded">
             <p className="text-xs text-gray-500">Status</p>
-            <p className="font-semibold">{parcel.status}</p>
+            <p className="font-semibold text-sm">{parcel.status}</p>
           </div>
-          <div className="bg-gray-100 p-2 rounded">
+          <div className="bg-gray-100 p-3 rounded">
             <p className="text-xs text-gray-500">Fee</p>
-            <p className="font-semibold">৳ {parcel.fee}</p>
+            <p className="font-semibold text-sm">৳ {parcel.fee}</p>
           </div>
-          <div className="bg-gray-100 p-2 rounded">
+          <div className="bg-gray-100 p-3 rounded">
             <p className="text-xs text-gray-500">Weight</p>
-            <p className="font-semibold">{parcel.weight} kg</p>
+            <p className="font-semibold text-sm">{parcel.weight} kg</p>
           </div>
-          <div className="bg-gray-100 p-2 rounded">
+          <div className="bg-gray-100 p-3 rounded">
             <p className="text-xs text-gray-500">Delivery Date</p>
-            <p className="font-semibold">
+            <p className="font-semibold text-sm">
               {new Date(parcel.deliveriDate).toLocaleString()}
             </p>
           </div>
         </div>
 
         {/* Address */}
-        <div className="mt-4">
-          <p className="text-xs text-gray-500">Pickup Address</p>
-          <p className="font-semibold">{parcel.pickUpAddress}</p>
-          <p className="text-xs text-gray-500 mt-2">Delivery Address</p>
-          <p className="font-semibold">{parcel.deliveryAddress}</p>
+        <div className="mt-4 space-y-2">
+          <div>
+            <p className="text-xs text-gray-500">Pickup Address</p>
+            <p className="font-semibold text-sm">{parcel.pickUpAddress}</p>
+          </div>
+          <div>
+            <p className="text-xs text-gray-500">Delivery Address</p>
+            <p className="font-semibold text-sm">{parcel.deliveryAddress}</p>
+          </div>
         </div>
 
         {/* Tracking Events */}
@@ -85,13 +92,13 @@ export default function PercelDialog({ parcel, trigger }: PercelDialogProps) {
             {parcel.trackingEvents?.length ? (
               parcel.trackingEvents.map((event) => (
                 <div key={event._id} className="mb-4 relative">
-                  <span className="absolute -left-[17px]  top-1 w-4 h-4 rounded-full bg-blue-500"></span>
-                  <p className="font-semibold">{event.status}</p>
-                  <p className="text-sm text-gray-600">📍 {event.location}</p>
+                  <span className="absolute -left-[17px] top-1 w-4 h-4 rounded-full bg-blue-500"></span>
+                  <p className="font-semibold text-sm">{event.status}</p>
+                  <p className="text-xs text-gray-600">📍 {event.location}</p>
                   {event.note && (
                     <p className="text-xs text-gray-500">💬 {event.note}</p>
                   )}
-                  <p className="text-xs text-gray-400">
+                  <p className="text-[10px] text-gray-400">
                     {new Date(event.createdAt).toLocaleString()}
                   </p>
                 </div>
