@@ -1,5 +1,6 @@
 import Createpercel from "@/pages/sender/Createpercel";
 import ManagePercel from "@/pages/sender/ManagePercel";
+import StatusLog from "@/pages/sender/StatusLog";
 
 export const senderSidebar = [
   {
@@ -15,6 +16,11 @@ export const senderSidebar = [
         title: "Manage Percel",
         url: "/sender/Manage-Percel",
         Component: ManagePercel,
+      },
+      {
+        title: "percel-status",
+        url: "/sender/status-log",
+        Component: StatusLog,
       },
     ],
   },
