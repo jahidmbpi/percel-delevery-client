@@ -1,5 +1,5 @@
+import ManageAdminPercel from "@/pages/admin/PARCEL/ManageAdminPercel";
 import Manageuser from "@/pages/admin/user/Manageuser";
-import Createpercel from "@/pages/sender/Createpercel";
 
 export const adminSidebar = [
   {
@@ -12,9 +12,9 @@ export const adminSidebar = [
         Component: Manageuser,
       },
       {
-        title: "Project Structure",
-        url: "/admin/percel",
-        Component: Createpercel,
+        title: "Manage Parcel",
+        url: "/admin/manage-parcel",
+        Component: ManageAdminPercel,
       },
     ],
   },

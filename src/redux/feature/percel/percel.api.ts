@@ -30,6 +30,7 @@ export const percelApi = baseApi.injectEndpoints({
       }) => {
         return response.data;
       },
+      providesTags: ["PERCEL"],
     }),
     updateParcel: builder.mutation({
       query: ({ id, status }) => ({
@@ -39,6 +40,13 @@ export const percelApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["PERCEL"],
     }),
+    getAllAdminPercel: builder.query({
+      query: () => ({
+        url: "/percel/admin-percel",
+        method: "GET",
+      }),
+      providesTags: ["PERCEL"],
+    }),
   }),
 });
 
@@ -46,4 +54,5 @@ export const {
   useCreatePercelMutation,
   useGetAllSenderPercelQuery,
   useUpdateParcelMutation,
+  useGetAllAdminPercelQuery,
 } = percelApi;

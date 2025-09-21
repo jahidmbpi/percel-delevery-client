@@ -38,6 +38,7 @@ export const userApi = baseApi.injectEndpoints({
         url: "/user",
         method: "GET",
       }),
+      providesTags: ["USER"],
     }),
 
     updateUser: builder.mutation({

@@ -8,7 +8,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { View } from "lucide-react";
-
 import PercelDialog from "@/components/PercelDialog";
 
 export default function StatusLog() {
@@ -48,16 +47,14 @@ export default function StatusLog() {
               </TableCell>
               <TableCell>৳ {item.fee}</TableCell>
               <TableCell>
-                <TableCell>
-                  <PercelDialog
-                    parcel={item}
-                    trigger={
-                      <button className="p-1 rounded hover:bg-gray-100">
-                        <View className="w-5 h-5 text-blue-600" />
-                      </button>
-                    }
-                  />
-                </TableCell>
+                <PercelDialog
+                  parcel={item}
+                  trigger={
+                    <button className="p-1 rounded hover:bg-gray-100">
+                      <View className="w-5 h-5 text-blue-600" />
+                    </button>
+                  }
+                />
               </TableCell>
             </TableRow>
           ))}

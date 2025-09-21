@@ -38,7 +38,7 @@ type StatusFormValues = {
 };
 export default function StatusDialog({ children, user }: userDialogProps) {
   const [updateUser] = useUpdateUserMutation();
-  console.log(user);
+
   const form = useForm<StatusFormValues>({
     defaultValues: {
       role: user.role,
@@ -49,7 +49,6 @@ export default function StatusDialog({ children, user }: userDialogProps) {
   const handelUpdateUserStatus: SubmitHandler<StatusFormValues> = async (
     data
   ) => {
-    console.log(data);
     try {
       console.log(user._id);
       const result = await updateUser({
@@ -98,7 +97,7 @@ export default function StatusDialog({ children, user }: userDialogProps) {
                         <SelectContent>
                           <SelectItem value="SENDER">SENDER</SelectItem>
                           <SelectItem value="ADMIN">ADMIN</SelectItem>
-                          <SelectItem value="RECIVER">RECIVER</SelectItem>
+                          <SelectItem value="RECEIVER">RECIVER</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

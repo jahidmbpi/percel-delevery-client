@@ -18,7 +18,7 @@ import StatusDialog from "./StatusDialog";
 
 export default function ManageUser() {
   const { data: alluser, isLoading } = useGetAlluserForAdminQuery(undefined);
-  console.log(alluser);
+
   const [updateUser] = useUpdateUserMutation();
 
   const handleDelete = async (userId: string) => {
