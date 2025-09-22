@@ -14,6 +14,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useGetMeQuery } from "@/redux/feature/auth/auth.api";
 import { useCreatePercelMutation } from "@/redux/feature/percel/percel.api";
 
@@ -135,9 +142,23 @@ export default function CreateParcel() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Type</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Parcel type" {...field} />
-                      </FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full">
+                            <SelectValue />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="document">document</SelectItem>
+                          <SelectItem value="box">box</SelectItem>
+                          <SelectItem value="fragile">fragile</SelectItem>
+                          <SelectItem value="other">other</SelectItem>
+                        </SelectContent>
+                      </Select>
+
                       <FormMessage />
                     </FormItem>
                   )}

@@ -7,12 +7,24 @@ import { Button } from "../ui/button";
 import { useGetMeQuery, userApi } from "@/redux/feature/auth/auth.api";
 import { useLogOutMutation } from "@/redux/feature/user/user.api";
 import { useDispatch } from "react-redux";
+import { Input } from "../ui/input";
+import { useSinglePercelQuery } from "@/redux/feature/percel/percel.api";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [trakinId, setTrakinId] = useState("");
+  const [inpuValue, setInputValue] = useState("");
+
   const dispatch = useDispatch();
   const { data: userData, isLoading, error } = useGetMeQuery(undefined);
-  console.log(userData);
+
+  const { data: singlePercel } = useSinglePercelQuery(
+    { trakinId },
+    { skip: !trakinId }
+  );
+
+  console.log("single parcel", singlePercel);
+
   const [logOut] = useLogOutMutation();
   console.log("error", error);
   console.log("isloading", isLoading);
@@ -26,10 +38,20 @@ export default function Navbar() {
     }
   };
 
+  const handelegetInput = (data: string) => {
+    setInputValue(data);
+  };
+  const handleSearch = () => {
+    if (!inpuValue) return;
+    setTrakinId(inpuValue);
+    setInputValue("");
+  };
+
   const links = [
     { name: "Home", path: "/" },
     { name: "Parcels", path: "/parcels" },
     { name: "Contact", path: "/contact" },
+    { name: "About", path: "/about" },
   ];
 
   return (
@@ -37,6 +59,18 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto  py-3 flex items-center justify-between">
         <div>
           <img className="w-[50px] h-[50px]" src={logo} alt="logo" />
+        </div>
+
+        <div className="w-full gap-2 md:w-[30%] flex md:gap-4">
+          <Input
+            type="text"
+            placeholder="Traking Id"
+            value={inpuValue}
+            onChange={(e) => handelegetInput(e.target.value)}
+          />
+          <Button variant="outline" onClick={handleSearch}>
+            Search
+          </Button>
         </div>
 
         <div className="flex items-center">

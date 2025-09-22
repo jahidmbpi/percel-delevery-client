@@ -10,6 +10,7 @@ import { senderSidebar } from "./senderSidebar";
 import Register from "@/pages/authentication/register/Register";
 import Login from "@/pages/authentication/login/Login";
 import UnAuthorized from "@/components/sheard/UnAuthorized";
+import AboutPage from "@/pages/about/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/about",
+        Component: AboutPage,
       },
     ],
   },

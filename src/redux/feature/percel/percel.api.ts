@@ -63,6 +63,16 @@ export const percelApi = baseApi.injectEndpoints({
       transformResponse: (response: { data: Percel[] }) => response.data,
       providesTags: ["PERCEL"],
     }),
+    singlePercel: builder.query<Percel | null, { trakinId: string }>({
+      query: (trakinId) => (
+        console.log(trakinId),
+        {
+          url: `/percel/single`,
+          method: "GET",
+          params: trakinId,
+        }
+      ),
+    }),
   }),
 });
 
@@ -73,4 +83,5 @@ export const {
   useGetAllAdminPercelQuery,
   useGetAllReciverPercelQuery,
   usePercelHistoryQuery,
+  useSinglePercelQuery,
 } = percelApi;
