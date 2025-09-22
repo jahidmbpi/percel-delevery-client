@@ -47,6 +47,13 @@ export const percelApi = baseApi.injectEndpoints({
       }),
       providesTags: ["PERCEL"],
     }),
+    getAllReciverPercel: builder.query({
+      query: () => ({
+        url: "/percel/me",
+        method: "GET",
+      }),
+      providesTags: ["PERCEL"],
+    }),
   }),
 });
 
@@ -55,4 +62,5 @@ export const {
   useGetAllSenderPercelQuery,
   useUpdateParcelMutation,
   useGetAllAdminPercelQuery,
+  useGetAllReciverPercelQuery,
 } = percelApi;
