@@ -63,7 +63,7 @@ export const percelApi = baseApi.injectEndpoints({
       transformResponse: (response: { data: Percel[] }) => response.data,
       providesTags: ["PERCEL"],
     }),
-    singlePercel: builder.query<Percel | null, { trakinId: string }>({
+    singlePercel: builder.query<IResponse<Percel>, { trakinId: string }>({
       query: (trakinId) => (
         console.log(trakinId),
         {

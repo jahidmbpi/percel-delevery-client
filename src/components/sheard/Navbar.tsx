@@ -9,6 +9,7 @@ import { useLogOutMutation } from "@/redux/feature/user/user.api";
 import { useDispatch } from "react-redux";
 import { Input } from "../ui/input";
 import { useSinglePercelQuery } from "@/redux/feature/percel/percel.api";
+import Single from "../Single";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -68,9 +69,12 @@ export default function Navbar() {
             value={inpuValue}
             onChange={(e) => handelegetInput(e.target.value)}
           />
-          <Button variant="outline" onClick={handleSearch}>
-            Search
-          </Button>
+          <Single data={singlePercel?.data ?? null}>
+            {" "}
+            <Button variant="outline" onClick={handleSearch}>
+              Search
+            </Button>
+          </Single>
         </div>
 
         <div className="flex items-center">
