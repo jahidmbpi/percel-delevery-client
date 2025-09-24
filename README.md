@@ -1,69 +1,107 @@
-# React + TypeScript + Vite
+# 📦 Parcel Delivery System (Frontend + Backend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Project Overview
 
-Currently, two official plugins are available:
+A **secure, role-based parcel delivery system** built with **React, Redux Toolkit, RTK Query (Frontend)** and **Node.js, Express, MongoDB (Backend)**.  
+This project allows **Senders, Receivers, and Admins** to manage parcels efficiently with real-time status updates and tracking.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React.js (Vite)
+- Redux Toolkit & RTK Query
+- React Router
+- Tailwind CSS
+- TypeScript/JavaScript
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Backend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Node.js / Express.js
+- MongoDB / Mongoose
+- JWT Authentication
+- Bcrypt (Password hashing)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📌 Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Public
+
+- Landing Page
+- About Page
+- Contact Page
+- Parcel Tracking by Tracking ID
+
+### Authentication
+
+- Login & Registration (Sender/Receiver role)
+- Role-based Dashboard Redirect
+- Persisted Login (JWT + Cookies/LocalStorage)
+
+### Sender Dashboard
+
+- Create Parcel
+- Cancel Parcel (if not dispatched)
+- View Own Parcels + Status
+
+### Receiver Dashboard
+
+- View Incoming Parcels
+- Confirm Delivery
+- Delivery History
+
+### Admin Dashboard
+
+- Manage All Users (block/unblock)
+- Manage All Parcels (update/cancel)
+- Assign Delivery Personnel (optional)
+
+### General
+
+- Pagination, Search, Filter
+- Toast Notifications (Success/Error)
+- Charts & Overview Cards
+- Responsive Design
+
+---
+
+## 🔑 Test Credentials
+
+### Admin
+
+- Email: `admin@parcel.com`
+- Password: `Admin123`
+
+### Sender
+
+- Email: `sender@parcel.com`
+- Password: `Sender123`
+
+### Receiver
+
+- Email: `receiver@parcel.com`
+- Password: `Receiver123`
+
+---
+
+## ⚡ Live Links
+
+- **Frontend:** [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
+- **Backend:** [https://your-backend-url.vercel.app](https://your-backend-url.vercel.app)
+
+---
+
+## 🖥️ Installation & Setup
+
+### Clone the repositories
+
+```bash
+# Frontend
+git clone https://github.com/your-username/parcel-delivery-frontend.git
+cd parcel-delivery-frontend
+yarn install
+yarn dev
 ```
