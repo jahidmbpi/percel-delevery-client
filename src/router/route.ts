@@ -11,6 +11,7 @@ import Register from "@/pages/authentication/register/Register";
 import Login from "@/pages/authentication/login/Login";
 import UnAuthorized from "@/components/sheard/UnAuthorized";
 import AboutPage from "@/pages/about/AboutPage";
+import Contact from "@/pages/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutPage,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },

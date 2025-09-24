@@ -14,12 +14,10 @@ interface SingleProps {
 }
 
 export default function Single({ children, data }: SingleProps) {
-  if (!data) return null;
-
   return (
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
-      <DialogContent className="max-w-lg rounded-lg shadow-lg bg-white">
+      <DialogContent className="max-w-lg max-h-[800px] rounded-lg shadow-lg bg-white">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-gray-800">
             Parcel Details
@@ -29,7 +27,7 @@ export default function Single({ children, data }: SingleProps) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mt-4 space-y-4">
+        <div className="mt-4 space-y-4 max-h-[600px] overflow-auto">
           {/* Parcel Info */}
           <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -37,21 +35,21 @@ export default function Single({ children, data }: SingleProps) {
                 <span className="font-semibold text-gray-700">
                   Tracking ID:
                 </span>{" "}
-                {data.trakinId}
+                {data?.trakinId}
               </div>
               <div>
                 <span className="font-semibold text-gray-700">Type:</span>{" "}
-                {data.type}
+                {data?.type}
               </div>
               <div>
                 <span className="font-semibold text-gray-700">Weight:</span>{" "}
-                {data.weight} kg
+                {data?.weight} kg
               </div>
               <div>
                 <span className="font-semibold text-gray-700">Sender ID:</span>{" "}
-                {data.sender}
+                {data?.sender}
               </div>
-              {data.reciver && (
+              {data?.reciver && (
                 <div>
                   <span className="font-semibold text-gray-700">
                     Receiver ID:
@@ -59,7 +57,7 @@ export default function Single({ children, data }: SingleProps) {
                   {data.reciver}
                 </div>
               )}
-              {data.status && (
+              {data?.status && (
                 <div>
                   <span className="font-semibold text-gray-700">Status:</span>{" "}
                   <span
@@ -73,7 +71,7 @@ export default function Single({ children, data }: SingleProps) {
                   </span>
                 </div>
               )}
-              {data.pickUpAddress && (
+              {data?.pickUpAddress && (
                 <div>
                   <span className="font-semibold text-gray-700">
                     PickUp Address:
@@ -81,7 +79,7 @@ export default function Single({ children, data }: SingleProps) {
                   {data.pickUpAddress}
                 </div>
               )}
-              {data.deliveryAddress && (
+              {data?.deliveryAddress && (
                 <div>
                   <span className="font-semibold text-gray-700">
                     Delivery Address:
@@ -89,7 +87,7 @@ export default function Single({ children, data }: SingleProps) {
                   {data.deliveryAddress}
                 </div>
               )}
-              {data.deliveriDate && (
+              {data?.deliveriDate && (
                 <div>
                   <span className="font-semibold text-gray-700">
                     Delivery Date:
@@ -97,7 +95,7 @@ export default function Single({ children, data }: SingleProps) {
                   {new Date(data.deliveriDate).toLocaleDateString()}
                 </div>
               )}
-              {data.fee && (
+              {data?.fee && (
                 <div>
                   <span className="font-semibold text-gray-700">Fee:</span>{" "}
                   {data.fee} ৳
@@ -107,7 +105,7 @@ export default function Single({ children, data }: SingleProps) {
           </div>
 
           {/* Tracking Events */}
-          {data.trackingEvents && data.trackingEvents.length > 0 && (
+          {data?.trackingEvents && data.trackingEvents.length > 0 && (
             <div className="mt-6">
               <h3 className="text-lg font-semibold text-gray-800 mb-3">
                 Tracking Events

@@ -4,9 +4,11 @@ import CoustomerReview from "./CoustomerReview";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col">
       <Banner />
-      <AboutPage></AboutPage>
+      <div className="mt-10">
+        <AboutPage></AboutPage>
+      </div>
       <CoustomerReview></CoustomerReview>
     </div>
   );

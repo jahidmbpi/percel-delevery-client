@@ -50,7 +50,6 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", path: "/" },
-    { name: "Parcels", path: "/parcels" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
   ];
@@ -71,7 +70,7 @@ export default function Navbar() {
           />
           <Single data={singlePercel?.data ?? null}>
             {" "}
-            <Button variant="outline" onClick={handleSearch}>
+            <Button className="" variant="ghost" onClick={handleSearch}>
               Search
             </Button>
           </Single>
