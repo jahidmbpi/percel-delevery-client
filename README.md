@@ -72,25 +72,25 @@ This project allows **Senders, Receivers, and Admins** to manage parcels efficie
 
 ### Admin
 
-- Email: `admin@parcel.com`
-- Password: `Admin123`
+- Email: `jahidredmi108@gmail.com`
+- Password: `123456789A@`
 
 ### Sender
 
-- Email: `sender@parcel.com`
-- Password: `Sender123`
+- Email: `jahid.redmi10@gmail.com`
+- Password: `123456789A@`
 
 ### Receiver
 
-- Email: `receiver@parcel.com`
-- Password: `Receiver123`
+- Email: `jahid.redmi101@gmail.com`
+- Password: `123456789A@`
 
 ---
 
 ## ⚡ Live Links
 
-- **Frontend:** [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
-- **Backend:** [https://your-backend-url.vercel.app](https://your-backend-url.vercel.app)
+- **Frontend:** [https://percel-delevery-client.vercel.app]
+- **Backend:** [https://assainment-5-server-ochre.vercel.app]
 
 ---
 
